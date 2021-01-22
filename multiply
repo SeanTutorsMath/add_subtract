@@ -35,22 +35,22 @@ def check_guess(guess, answer):
 def difficulty():
     bound = input('\nMax times table (type: 3, 6, 9, 12, 100, or 500)? ')
     global x
-    if bound.lower() == '1':
+    if bound.lower() == '3':
         x = 3
         return
-    if bound.lower() == '2':
+    if bound.lower() == '6':
         x = 6
         return
-    if bound.lower() == '3':
+    if bound.lower() == '9':
         x = 9
         return
-    if bound.lower() == '4':
+    if bound.lower() == '12':
         x = 12
         return
-    if bound.lower() == '5':
+    if bound.lower() == '100':
         x = 100
         return
-    if bound.lower() == '6':
+    if bound.lower() == '500':
         x = 500
         return
     else:
