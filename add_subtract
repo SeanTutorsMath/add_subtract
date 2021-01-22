@@ -1,0 +1,70 @@
+import random
+import time
+
+#function
+def check_guess(guess, answer):
+
+    global score
+    global start
+    global time
+    
+    still_guessing = True
+
+    attempt = 0
+    
+    while still_guessing and attempt < 2:
+        
+        if str(guess) == str(answer):
+            print('Correct ')
+            score += 1
+            still_guessing = False
+
+        else:
+            if attempt < 1:
+                guess = input('Try again: ')
+            attempt += 1
+
+    if attempt == 2:
+        print(str(a) + op + str(b) + ' equals ' + str(answer))
+
+    end = time.time() - start
+#change time limit here
+    if end >= t:
+        end_game()
+
+def end_game():
+    print('\nYou scored ' + str(score) + ' points in ' + str(t) + ' seconds.')
+    another = input('\nPlay again (Yes or No)?')
+    
+    if another.lower() == 'yes':
+        return
+    else:
+        print('\nThank you for playing.')
+        exit()
+        
+#set time in seconds
+t = 5
+
+score = 0
+
+start = time.time()
+
+while True:
+    #generating random values and operations
+    operator = ('+', '-')
+    op = random.choice(operator)
+    
+    a = random.randint(0, 18)
+    b = random.randint(0, 18)           
+
+    #player's guess
+    if op == ('+') or ('-' and a > b):
+        answer = eval(str(a) + op + str(b))
+        guess = input ('\n' + str(a) + ' ' + op + ' ' + str(b) + ' = ')
+                
+    if op == '-' and a < b:
+        answer = eval(str(b) + op + str(a))
+        guess = input ('\n' + str(b) + ' ' + op + ' ' + str(a) + ' = ')
+
+    #run the function
+    check_guess(guess, answer)
