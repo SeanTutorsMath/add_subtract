@@ -1,0 +1,86 @@
+import random
+import time
+
+#function
+def check_guess(guess, answer):
+
+    global score
+    global start
+    global time
+    
+    still_guessing = True
+
+    attempt = 0
+    
+    while still_guessing and attempt < 2:
+        
+        if str(guess) == str(answer):
+            print('Correct ')
+            score += 1
+            still_guessing = False
+
+        else:
+            if attempt < 1:
+                guess = input('Try again: ')
+            attempt += 1
+
+    if attempt == 2:
+        print(str(a) + op + str(b) + ' is ' + str(answer))
+
+    end = time.time() - start
+#change time limit here
+    if end >= t:
+        end_game()
+
+def difficulty():
+    bound = input('\nDiffculty (type level number: 1, 2, 3, 4, 5, or 6)? ')
+    global x
+    if bound.lower() == '1':
+        x = 3
+        return
+    if bound.lower() == '2':
+        x = 6
+        return
+    if bound.lower() == '3':
+        x = 9
+        return
+    if bound.lower() == '4':
+        x = 12
+        return
+    if bound.lower() == '5':
+        x = 100
+        return
+    if bound.lower() == '6':
+        x = 500
+        return
+    else:
+        difficulty()
+
+def end_game():
+    print('\nYou scored ' + str(score) + ' points in ' + str(t) + ' seconds.')
+
+    exit()
+
+#body of code
+
+difficulty()
+
+#set time in seconds
+t = 60
+
+score = 0
+
+start = time.time()
+
+while True:
+    #generating random values and operations
+    a = random.randint(2, x)
+    b = random.randint(2, x)
+    op = '*'
+
+    #player's guess
+    guess = input ('\n' + str(a) + ' ' + 'x' + ' ' + str(b) + ' = ')
+    answer = eval(str(a) + op + str(b))
+
+    #run the function
+    check_guess(guess, answer)
