@@ -33,7 +33,7 @@ def check_guess(guess, answer):
         end_game()
 
 def difficulty():
-    bound = input('\nDiffculty (type level number: 1, 2, 3, 4, 5, or 6)? ')
+    bound = input('\nMax times table (type: 3, 6, 9, 12, 100, or 500)? ')
     global x
     if bound.lower() == '1':
         x = 3
